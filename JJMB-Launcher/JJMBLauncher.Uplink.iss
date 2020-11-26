@@ -1,4 +1,4 @@
-objectdef basiclauncher
+objectdef jjmblauncher
 {
     method Initialize()
     {
@@ -8,19 +8,18 @@ objectdef basiclauncher
 
         This:RefreshGames
 
-        LGUI2:LoadPackageFile[BasicLauncher.Uplink.lgui2Package.json]
+        LGUI2:LoadPackageFile[JJMBLauncher.Uplink.lgui2Package.json]
     }
 
     method Shutdown()
     {
-        LGUI2:UnloadPackageFile[BasicLauncher.Uplink.lgui2Package.json]
+        LGUI2:UnloadPackageFile[JJMBLauncher.Uplink.lgui2Package.json]
     }
 
-    variable uint LaunchSlots=3
+    variable uint LaunchSlots=5
     variable bool ReplaceSlots=TRUE
 
     variable string UseGame
-;    variable string UseGameProfile="WoW Classic Default Profile"
     variable jsonvalue Games="[]"
 
     method InstallCharacters()
@@ -88,7 +87,7 @@ objectdef basiclauncher
 
 		; build an itemview lgui2element json
 		variable jsonvalue joListBoxItem
-		joListBoxItem:SetValue["${LGUI2.Template["BasicLauncher.gameView"].AsJSON~}"]
+		joListBoxItem:SetValue["${LGUI2.Template["JJMBLauncher.gameView"].AsJSON~}"]
         		
 		Context:SetView["${joListBoxItem.AsJSON~}"]
 	}
@@ -113,11 +112,11 @@ objectdef basiclauncher
         }
     
         Games:SetValue["${jo.AsJSON~}"]
-        LGUI2.Element[BasicLauncher.events]:FireEventHandler[onGamesUpdated]
+        LGUI2.Element[JJMBLauncher.events]:FireEventHandler[onGamesUpdated]
     }
 }
 
-variable(global) basiclauncher BasicLauncher
+variable(global) jjmblauncher JJMBLauncher
 
 function main()
 {
